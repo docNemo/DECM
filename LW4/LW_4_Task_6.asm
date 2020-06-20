@@ -3,16 +3,19 @@ TITLE RandomString		(LW_4_Task_6.asm)
 INCLUDE Irvine32.inc
 
 .data
-numOfStr DWORD 20d
-numOfChar DWORD 10d
+numOfStr BYTE 20d
+numOfChar BYTE 10d
 min DWORD 'A'
 max DWORD 'Z'
 
 .code
 main PROC
-	mov ecx, numOfStr
+	xor ecx, ecx
+	mov cl, numOfStr
+	call Randomize
 	l:
-		mov eax, numOfChar
+		xor eax, eax
+		mov al, numOfChar
 		mov ebx, min
 		mov edx, max
 
@@ -31,7 +34,7 @@ randomStr PROC
 numOfCh DWORD ?
 minC DWORD ?
 maxC DWORD ?
-string BYTE 10 DUP(0)
+string BYTE 11 DUP(0)
 
 .code
 	mov numOfCh, eax
@@ -43,8 +46,8 @@ string BYTE 10 DUP(0)
 	mov ecx, numOfCh
 
 	lStr :
-		mov eax, minC
-		mov ebx, maxC
+		mov ebx, minC
+		mov eax, maxC
 		call random
 
 		mov [edx], eax
@@ -58,23 +61,11 @@ ret
 randomStr ENDP
 
 random PROC
+	sub eax, ebx
 
-.data
-maxA DWORD ?
-maxL DWORD ?
-minL DWORD ?
-
-.code
-	mov minL, eax
-	mov maxL, ebx
-
-	mov maxA, ebx
-	sub maxA, eax
-
-	mov eax, maxA
 	inc eax
 	call RandomRange
-	add eax, minL
+	add eax, ebx
 ret
 random ENDP
 

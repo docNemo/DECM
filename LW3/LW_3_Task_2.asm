@@ -1,22 +1,24 @@
 TITLE MathExpression 		(LW_3_Task_2.asm)
 
 INCLUDE Irvine32.inc
+INCLUDE Macros.inc
 
 .data
-val1 SDWORD 8
-val2 SDWORD -15
-val3 SDWORD 20
+val1 SBYTE 8
+val2 SBYTE -15
+val3 SBYTE 20
 
 .code
 main PROC
+	xor eax, eax
+	mov al, val2
+	neg al
 
-	mov eax, val2
-	neg eax
+	add al, 7
+	sub al, val3
+	add al, val1
 
-	add eax, 7
-	sub eax, val3
-	add eax, val1
-	call DumpRegs
+	mShowRegister EAX, EAX
 
 	exit
 exit

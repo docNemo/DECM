@@ -63,13 +63,12 @@ main PROC
 		call Crlf
 		jmp input
 
-
-
 	ex:
 		exit
 main ENDP
 
 AND_op proc
+
 .data
 requestAnd BYTE "Input two hexadecimal numbers for AND operation",0
 
@@ -89,6 +88,7 @@ ret
 AND_op ENDP
 
 OR_op proc
+
 .data
 requestOr BYTE "Input two hexadecimal numbers for Or operation",0
 
@@ -108,6 +108,7 @@ ret
 OR_op ENDP
 
 NOT_op proc
+
 .data
 requestNot BYTE "Input one hexadecimal number for NOT operation",0
 
@@ -124,6 +125,7 @@ ret
 NOT_op ENDP
 
 XOR_op proc
+
 .data
 requestXor BYTE "Input two hexadecimal numbers for XOR operation",0
 

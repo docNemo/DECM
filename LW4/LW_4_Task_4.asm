@@ -3,12 +3,12 @@ TITLE LW4T4  (LW_4_Task_4.asm)
 INCLUDE Irvine32.inc
 
 .data
-numRep DWORD 3d
+numRep BYTE 3d
 
 .code
 main PROC
-
-	mov ecx, numRep
+	xor ecx, ecx
+	mov cl, numRep
 	l: 
 	call clearDisplay
 	call output
@@ -28,10 +28,11 @@ output PROC
 .data
 
 ing BYTE "Hello! I\'m your aunt and I will live with you!!!", 0
-color DWORD white + (black * 16)
+color WORD white + (black * 16)
 
 .code
-	mov eax, color
+	xor eax, eax
+	mov ax, color
 	call SetTextColor
 
 	mov edx, OFFSET ing
@@ -47,10 +48,10 @@ output ENDP
 clearDisplay PROC
 
 .data
-standartColor DWORD lightGray + (black * 16)
+standartColor WORD lightGray + (black * 16)
 
 .code
-mov eax, standartColor
+mov ax, standartColor
 	call SetTextColor
 	call ClrScr
 

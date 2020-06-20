@@ -5,12 +5,12 @@ INCLUDE Macros.inc
 
 .data
 chr BYTE 'D'
-numOfColor DWORD 16
+numOfColor BYTE 16
 
 .code
 main PROC
-
-	mov ecx, numOfColor
+	xor ecx, ecx
+	mov cl, numOfColor
 	L1:
 		
 		mov edx, ecx
@@ -19,7 +19,8 @@ main PROC
 
 		push ecx
 		
-		mov ecx, numOfColor		
+		xor ecx, ecx
+		mov cl, numOfColor		
 		L2:
 			mov ebx, ecx
 			dec ebx
@@ -46,10 +47,10 @@ main ENDP
 clearDisplay PROC
 
 .data
-standartColor DWORD lightGray + (black * 16)
+standartColor WORD lightGray + (black * 16)
 
 .code
-	mov eax, standartColor
+	mov ax, standartColor
 	call SetTextColor
 
 ret
