@@ -6,7 +6,7 @@ INCLUDE Macros.inc
 .data
 
 chr BYTE 'A'
-numOfRepeat DWORD 100d
+numOfRepeat BYTE 100d
 maxX DWORD 200d
 maxY DWORD 50d
 
@@ -21,20 +21,22 @@ d BYTE ?
 main PROC
 	
 	call ClrScr
+	call Randomize
 
-	mov ecx, numOfRepeat
+	xor ecx, ecx
+	mov cl, numOfRepeat
 	l:		
 		call randomGoto
 		
-		mov eax, 'A'
-		mov ebx, 'Z'
+		mov ebx, 'A'
+		mov eax, 'Z'
 		call random
 
 		;mov al, chr
 		call WriteChar
 
-		mov eax, minDelay
-		mov ebx, maxDelay
+		mov ebx, minDelay
+		mov eax, maxDelay
 		call random
 		call DELAY
 		loop l
@@ -63,23 +65,11 @@ ret
 randomGoto ENDP
 
 random PROC
+	sub eax, ebx
 
-.data
-maxA DWORD ?
-maxL DWORD ?
-minL DWORD ?
-
-.code
-	mov minL, eax
-	mov maxL, ebx
-
-	mov maxA, ebx
-	sub maxA, eax
-
-	mov eax, maxA
 	inc eax
 	call RandomRange
-	add eax, minL
+	add eax, ebx
 ret
 random ENDP
 

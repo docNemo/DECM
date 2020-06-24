@@ -4,16 +4,13 @@ INCLUDE Irvine32.inc
 INCLUDE Macros.inc
 
 .data
-NumOfNum BYTE 7d
+NumOfNum = 7d  ; correct
 
 .code
 main PROC
-	xor ecx, ecx
-	mov cl, NumOfNum
-
-	xor eax, eax
-	xor ebx, ebx
-
+	
+	movzx ecx, NumOfNum ; correct
+	
 	mov eax, 1
 	mov ebx, 1
 l:

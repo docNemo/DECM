@@ -3,13 +3,8 @@ TITLE ClearDisplay		(LW_4_Task_3.asm)
 INCLUDE Irvine32.inc
 
 .data
-x BYTE 79d
-y BYTE 25d
-
-fstNum SDWORD ?
-sndNum SDWORD ?
-
-res SDWORD ?
+x = 79d
+y = 25d
 
 message BYTE "Input 2 integer:",0
 message1 BYTE "Sum = "
@@ -22,7 +17,7 @@ main PROC
 	mov dl, x
 	mov dh, y
 	call GotoXY
-	inc y
+	inc dh
 
 	mov edx,  OFFSET message
 	call WriteString
@@ -33,17 +28,14 @@ main PROC
 	inc dh
 
 	call ReadInt
-	mov fstNum, eax
+	mov ebx, eax
 
 	call GotoXY
 	inc dh
 
 	call ReadInt
-	mov sndNum, eax
 
-	add eax, fstNum
-	mov res, eax
-
+	add eax, ebx
 
 	call CrLf
 	call GotoXY
@@ -52,9 +44,6 @@ main PROC
 	call WriteString
 
 	call WriteInt
-
-
-
 
 exit
 main ENDP

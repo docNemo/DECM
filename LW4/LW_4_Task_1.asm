@@ -7,18 +7,16 @@ INCLUDE Macros.inc
 
 string BYTE "GoodBye America!", 0
 
-textColor DWORD white + (black * 16)
-standartColor DWORD lightGray + (black * 16)
+textColor = white + (black * 16)
+standartColor = lightGray + (black * 16)
 
-numOfRepeat DWORD 4d
+numOfRepeat = 4d
 
 .code
 main PROC
-	xor edx, edx
-	mov edx, OFFSET string
+	mov edx, OFFSET string	
 	
-	xor eax, eax
-	mov eax, textColor
+	movzx eax, textColor
 
 	mov ecx, numOfRepeat
 

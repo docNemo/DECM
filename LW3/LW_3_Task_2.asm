@@ -4,19 +4,19 @@ INCLUDE Irvine32.inc
 INCLUDE Macros.inc
 
 .data
-val1 SBYTE 8
-val2 SBYTE -15
-val3 SBYTE 20
+val1 = 8
+val2 = -15
+val3 = 20
 
 .code
 main PROC
-	xor eax, eax
-	mov al, val2
-	neg al
+	
+	movsx eax, val2
+	neg eax
 
-	add al, 7
-	sub al, val3
-	add al, val1
+	add eax, 7
+	sub eax, val3
+	add eax, val1
 
 	mShowRegister EAX, EAX
 

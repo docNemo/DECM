@@ -5,8 +5,8 @@ INCLUDE Macros.inc
 
 .data
 ;size = 10
-sizeArray SDWORD 10d
-array SDWORD 10 DUP(0)
+sizeArray = 10d
+array SDWORD sizeArray DUP(0)
 
 .code
 main PROC

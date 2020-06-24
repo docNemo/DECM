@@ -8,7 +8,7 @@ smallVar DWORD 0
 
 .code
 main PROC
-	
+	;+
 	call DumpRegs	; Output initial state
 
 	mov eax, bigVar	
@@ -22,6 +22,8 @@ main PROC
 	call DumpRegs
 
 	add eax, 1
+
+	;-
 
 	mov eax, smallVar	
 	dec eax
